@@ -1,0 +1,19 @@
+{
+  "result": {
+    "interpretations": [
+      {
+        "single_intent_interpretation": {
+          "entities": {},
+          "metadata": {},
+          "intent": "NO_MATCH",
+          "confidence": 1,
+          "origin": "STATISTICAL"
+        },
+        "interpretation_union": "single_intent_interpretation"
+      }
+    ],
+    "literal": "aaa bbb ccc",
+    "sensitive": false,
+    "formatted_literal": "aaa bbb ccc"
+  }
+}

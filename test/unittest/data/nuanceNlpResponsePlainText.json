@@ -1,0 +1,70 @@
+  {
+    "metadata": {},
+    "status": {
+      "code": 200,
+      "message": "OK",
+      "details": ""
+    },
+    "result": {
+      "interpretations": [
+        {
+          "single_intent_interpretation": {
+            "entities": {},
+            "metadata": {},
+            "intent": "iFAQLostLuggage",
+            "confidence": 1,
+            "origin": "GRAMMAR"
+          },
+          "interpretation_union": "single_intent_interpretation"
+        },
+        {
+          "single_intent_interpretation": {
+            "entities": {
+              "eGlobalCommands": {
+                "entities": [
+                  {
+                    "entities": {},
+                    "metadata": {},
+                    "text_range": {
+                      "start_index": 0,
+                      "end_index": 12
+                    },
+                    "confidence": 1,
+                    "origin": "GRAMMAR",
+                    "literal": "lost luggage",
+                    "sensitive": false,
+                    "formatted_literal": "lost luggage",
+                    "formatted_text_range": {
+                      "start_index": 0,
+                      "end_index": 12
+                    },
+                    "audio_range": null,
+                    "string_value": "lost luggage",
+                    "value_union": "string_value"
+                  }
+                ]
+              }
+            },
+            "metadata": {},
+            "intent": "NO_INTENT",
+            "confidence": 1,
+            "origin": "GRAMMAR"
+          },
+          "interpretation_union": "single_intent_interpretation"
+        },
+        {
+          "single_intent_interpretation": {
+            "entities": {},
+            "metadata": {},
+            "intent": "iBookFlight",
+            "confidence": 0.00016056164167821407,
+            "origin": "STATISTICAL"
+          },
+          "interpretation_union": "single_intent_interpretation"
+        }
+      ],
+      "literal": "lost luggage",
+      "sensitive": false,
+      "formatted_literal": "lost luggage"
+    }
+  }

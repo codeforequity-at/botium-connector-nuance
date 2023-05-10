@@ -1,0 +1,19 @@
+{
+  "utterances": [
+    {
+      "name": "not existing intent",
+      "utterances": [
+        "some",
+        "new",
+        "Utterances"
+      ]
+    },
+    {
+      "name": "iBookFlight",
+      "utterances": [
+        "not existing utterance",
+        "booking a flight"
+      ]
+    }
+  ]
+}

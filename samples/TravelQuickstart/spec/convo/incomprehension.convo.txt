@@ -1,0 +1,13 @@
+incomprehension conversation
+
+#bot
+Hi I'm Windborne Airlines' virtual assistant.
+
+#bot
+I can help with lots of things, like your Flight Status, Booking a Flight or Looking for Lost Luggage. How can I help you today?
+
+#me
+aaa bbb ccc
+
+#bot
+I need more information. Would you repeat your question in a different way?

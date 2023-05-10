@@ -1,0 +1,117 @@
+{
+  "convos": [],
+  "utterances": [
+    {
+      "name": "iBookFlight",
+      "utterances": [
+        "need a flight for today or for tomorrow",
+        "booking a flight",
+        "book a flight to New York from Cleveland tomorrow",
+        "i want to fly to new york tomorrow",
+        "is there a flight from atlanta to phoenix",
+        "i need to go to cleveland on monday",
+        "need to schedule a flight from phoenix",
+        "book a flight from new york city to cleveland on january 2nd",
+        "book a flight to chicago from la guardia on January 24th",
+        "schedule a flight from cleveland to new york",
+        "book a flight to san francisco",
+        "book a flight to new york city",
+        "buy tickets to san francisco",
+        "book a flight leaving from atlanta",
+        "book a flight",
+        "need to book a flight"
+      ]
+    },
+    {
+      "name": "iComponent",
+      "utterances": [
+        "component"
+      ]
+    },
+    {
+      "name": "iEntities",
+      "utterances": [
+        "Even true can be an entity",
+        "Do you understand today ?"
+      ]
+    },
+    {
+      "name": "iButtons",
+      "utterances": [
+        "buttons"
+      ]
+    },
+    {
+      "name": "iText",
+      "utterances": [
+        "text"
+      ]
+    },
+    {
+      "name": "iFAQLostLuggage",
+      "utterances": [
+        "have lost luggage",
+        "lost luggage",
+        "my luggage didn't arrive",
+        "i lost my luggage",
+        "where's my luggage",
+        "where's my suitcase",
+        "i can't find my luggage"
+      ]
+    },
+    {
+      "name": "NO_INTENT",
+      "utterances": [
+        "on december 21st",
+        "actually i'm leaving on friday",
+        "no i'm leaving from atlanta",
+        "actually i'm leaving from atlanta",
+        "actually to Seattle",
+        "what are my options",
+        "on thursday",
+        "actually I want to go to New York",
+        "options",
+        "customer service representative",
+        "representative",
+        "actually from Tokyo",
+        "i'd like to",
+        "i would like to",
+        "JFK",
+        "San Francisco",
+        "all the cities"
+      ]
+    },
+    {
+      "name": "iFlightStatus",
+      "utterances": [
+        "what's the status of my flight",
+        "is my flight delayed",
+        "is my flight on time",
+        "flight status",
+        "check the status of my flight"
+      ]
+    },
+    {
+      "name": "iAllDone",
+      "utterances": [
+        "goodbye",
+        "don't need any more help",
+        "that's all for now",
+        "nothing else thanks i'm good",
+        "nothing goodbye",
+        "i'm all set thanks",
+        "that's all thank you",
+        "that's it",
+        "nope",
+        "I'm done",
+        "nothing else , thanks",
+        "nothing else , i'm done",
+        "nope i'm done",
+        "no thanks i'm good",
+        "no all done",
+        "i'm done",
+        "that's all"
+      ]
+    }
+  ]
+}

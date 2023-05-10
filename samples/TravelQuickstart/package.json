@@ -1,0 +1,22 @@
+{
+  "name": "travelquickstart",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "botium": {
+    "convodirs": [
+      "spec/convo"
+    ],
+    "expandConvos": true,
+    "expandUtterancesToConvos": false
+  },
+  "devDependencies": {
+    "botium-bindings": "latest",
+    "botium-connector-nuance": "../../",
+    "mocha": "latest"
+  }
+}

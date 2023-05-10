@@ -1,0 +1,16 @@
+plaintext conversation
+
+#bot
+Hi I'm Windborne Airlines' virtual assistant.
+
+#bot
+I can help with lots of things, like your Flight Status, Booking a Flight or Looking for Lost Luggage. How can I help you today?
+
+#me
+lost luggage
+
+#bot
+INTENT iFAQLostLuggage
+Oh no! We can help.
+Just let us know within 4 hours of arriving at your destination and we'll take care of the rest.
+You can report lost luggage at the ticket counter, baggage claim, or by calling us at 800-333-5830.

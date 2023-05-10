@@ -1,0 +1,2673 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0",
+      "encoding": "UTF-8",
+      "standalone": "yes"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "project",
+      "attributes": {
+        "xmlns:nuance": "https://developer.nuance.com/mix/nlu/trsx",
+        "xml:lang": "eng-USA",
+        "nuance:version": "2.6",
+        "nuance:enginePackVersion": "hosted"
+      },
+      "elements": [
+        {
+          "type": "element",
+          "name": "sources",
+          "elements": [
+            {
+              "type": "element",
+              "name": "source",
+              "attributes": {
+                "name": "nuance_custom_data",
+                "displayName": "nuance_custom_data",
+                "version": "1.0",
+                "type": "CUSTOM",
+                "useForOOV": "true"
+              }
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "ontology",
+          "attributes": {
+            "base": "http://localhost:8080/resources/ontology-1.0.xml"
+          },
+          "elements": [
+            {
+              "type": "element",
+              "name": "intents",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iButtons"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iAllDone"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iFAQLostLuggage"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iComponent"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "Component1"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iText"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iBookFlight"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "links",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "link",
+                          "attributes": {
+                            "conceptref": "eCity"
+                          }
+                        },
+                        {
+                          "type": "element",
+                          "name": "link",
+                          "attributes": {
+                            "conceptref": "eDepartureCity"
+                          }
+                        },
+                        {
+                          "type": "element",
+                          "name": "link",
+                          "attributes": {
+                            "conceptref": "eArrivalCity"
+                          }
+                        },
+                        {
+                          "type": "element",
+                          "name": "link",
+                          "attributes": {
+                            "conceptref": "eDepartureDate"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iEntities"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "links",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "link",
+                          "attributes": {
+                            "conceptref": "nuance_BOOLEAN"
+                          }
+                        },
+                        {
+                          "type": "element",
+                          "name": "link",
+                          "attributes": {
+                            "conceptref": "eDepartureDate"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "iFlightStatus"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "concepts",
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eDepartureCity",
+                    "dataType": "not_set"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "relations",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "relation",
+                          "attributes": {
+                            "type": "isA",
+                            "conceptref": "eCity"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eArrivalCity",
+                    "dataType": "not_set"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "relations",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "relation",
+                          "attributes": {
+                            "type": "isA",
+                            "conceptref": "eCity"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eDepartureDate",
+                    "dataType": "date"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "relations",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "relation",
+                          "attributes": {
+                            "type": "isA",
+                            "conceptref": "DATE"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eGlobalCommands",
+                    "dataType": "not_set"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eConfirmFlightLookup",
+                    "dataType": "yes_no"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "relations",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "relation",
+                          "attributes": {
+                            "type": "isA",
+                            "conceptref": "YES_NO"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eConfirmFlight",
+                    "dataType": "yes_no"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "relations",
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "relation",
+                          "attributes": {
+                            "type": "isA",
+                            "conceptref": "YES_NO"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eBookFlight",
+                    "dataType": "not_set"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "concept",
+                  "attributes": {
+                    "name": "eCity",
+                    "dataType": "not_set"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "dictionaries",
+          "elements": [
+            {
+              "type": "element",
+              "name": "dictionary",
+              "attributes": {
+                "conceptref": "eGlobalCommands"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "agent",
+                    "value": "escalate"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "book a flight",
+                    "value": "book flight"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "cities",
+                    "value": "cities"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "escalate",
+                    "value": "escalate"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "flight status",
+                    "value": "flight status"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "give me options",
+                    "value": "options"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "human agent",
+                    "value": "escalate"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "list all the cities",
+                    "value": "cities"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "list the cities",
+                    "value": "cities"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "lost luggage",
+                    "value": "lost luggage"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "main menu",
+                    "value": "main menu"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "menu options",
+                    "value": "options"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "operator",
+                    "value": "escalate"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "options",
+                    "value": "options"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "speak to a representative",
+                    "value": "escalate"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "speak to someone",
+                    "value": "escalate"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "what are my options",
+                    "value": "options"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "what are the cities",
+                    "value": "cities"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "what are the options",
+                    "value": "options"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "what things can i say",
+                    "value": "options"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "dictionary",
+              "attributes": {
+                "conceptref": "eCity"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "Atlanta",
+                    "value": "Atlanta"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "Cleveland",
+                    "value": "Cleveland"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "JFK",
+                    "value": "New York City"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "LGA",
+                    "value": "New York City"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "New York",
+                    "value": "New York City"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "New York City",
+                    "value": "New York City"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "Phoenix",
+                    "value": "Phoenix"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "San Fran",
+                    "value": "San Francisco"
+                  }
+                },
+                {
+                  "type": "element",
+                  "name": "entry",
+                  "attributes": {
+                    "literal": "San Francisco",
+                    "value": "San Francisco"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "name": "samples",
+          "elements": [
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "need a flight for"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "today"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "or for"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "tomorrow"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iComponent",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "component"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iEntities",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Even"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "nuance_BOOLEAN"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "true"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "can be an entity"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iEntities",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Do you understand"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "today"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "?"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iButtons",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "buttons"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iText",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "text"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "have lost luggage"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "3",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "lost luggage"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "booking a flight"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "New York"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Cleveland"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "tomorrow"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "20",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "on"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "december 21st"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "4",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "my luggage didn't arrive"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i lost my luggage"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFlightStatus",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "what's the status of my flight"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "actually i'm leaving on"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "friday"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "no i'm leaving from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "atlanta"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "actually i'm leaving from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "atlanta"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "actually to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Seattle"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eGlobalCommands"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "what are my options"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "goodbye"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "don't need any more help"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "that's all for now"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "nothing else thanks i'm good"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "nothing goodbye"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i'm all set thanks"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "that's all thank you"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "where's my luggage"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "on"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "thursday"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i want to fly to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "new york"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "tomorrow"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "actually I want to go to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "New York"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "is there a flight from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "atlanta"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "phoenix"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i need to go to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "cleveland"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "on"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "monday"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "need to schedule a flight from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "phoenix"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eGlobalCommands"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "options"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eGlobalCommands"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "customer service representative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eGlobalCommands"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "representative"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "10",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "new york city"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "cleveland"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "on"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "january 2nd"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "that's it"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "nope"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "I'm done"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "where's my suitcase"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFlightStatus",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "is my flight delayed"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFlightStatus",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "is my flight on time"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFlightStatus",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "flight status"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFlightStatus",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "check the status of my flight"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "chicago"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "la guardia"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "on"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureDate"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "DATE"
+                      },
+                      "elements": [
+                        {
+                          "type": "element",
+                          "name": "annotation",
+                          "attributes": {
+                            "conceptref": "nuance_CALENDARX"
+                          },
+                          "elements": [
+                            {
+                              "type": "text",
+                              "text": "January 24th"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "schedule a flight from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "cleveland"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "new york"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "san francisco"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "new york city"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "nothing else , thanks"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "nothing else , i'm done"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "nope i'm done"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "no thanks i'm good"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "no all done"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i'm done"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iFAQLostLuggage",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i can't find my luggage"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "buy tickets to"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eArrivalCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "san francisco"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight leaving from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "atlanta"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "actually from"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eDepartureCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "element",
+                      "name": "annotation",
+                      "attributes": {
+                        "conceptref": "eCity"
+                      },
+                      "elements": [
+                        {
+                          "type": "text",
+                          "text": "Tokyo"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iAllDone",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "that's all"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "book a flight"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "2",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "need to book a flight"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i'd like to"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "i would like to"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "JFK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eCity"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "San Francisco"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "NO_INTENT",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "true"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "all the"
+                },
+                {
+                  "type": "element",
+                  "name": "annotation",
+                  "attributes": {
+                    "conceptref": "eGlobalCommands"
+                  },
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "cities"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "not existing intent",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "some"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "not existing intent",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "new"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "not existing intent",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "Utterances"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "name": "sample",
+              "attributes": {
+                "intentref": "iBookFlight",
+                "count": "1",
+                "excluded": "false",
+                "fullyVerified": "false"
+              },
+              "elements": [
+                {
+                  "type": "text",
+                  "text": "not existing utterance"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
