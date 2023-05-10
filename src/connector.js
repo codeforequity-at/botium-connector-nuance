@@ -115,7 +115,7 @@ class BotiumConnectorNuance {
         payload: {
           model_ref: {
             uri: `urn:nuance-mix:tag:model/${this.caps[Capabilities.NUANCE_CONTEXT_TAG]}/mix.dialog`,
-            type: 0 // TODO
+            type: 0
           },
           data: this.caps[Capabilities.NUANCE_INITIAL_CONTEXT],
           suppress_log_user_data: this.caps[Capabilities.NUANCE_SUPPRESS_LOG_USER_DATA]

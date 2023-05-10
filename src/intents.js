@@ -58,8 +58,7 @@ const _importIt = async ({ caps }) => {
   for (const sample of samples) {
     const intentName = sample.attributes?.intentref
     if (!intentName) {
-      // TODO
-      console.log(`intent name not found in ${JSON.stringify(sample)}`)
+      debug(`intent name not found in ${JSON.stringify(sample)}`)
     } else {
       const text = sample.elements.map(entry => _extractTextFromSampleEntry(entry)).join(' ')
       if (!utterances[intentName]) {
