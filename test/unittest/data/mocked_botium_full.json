@@ -1,0 +1,18 @@
+{
+  "botium": {
+    "Capabilities": {
+      "PROJECTNAME": "mocked",
+      "CONTAINERMODE": "nuance",
+      "NUANCE_CLIENT_ID": "mockedClientId",
+      "NUANCE_OAUTH_URL": "mockedOauthUrl",
+      "NUANCE_CLIENT_SECRET": "mockedClientSecret",
+      "NUANCE_CONTEXT_TAG": "mockedContextTag",
+      "NUANCE_CHANNEL": "mockedChannel",
+      "NUANCE_NLP_ANALYTICS_ENABLE": true,
+      "NUANCE_API_URL": "https://mockedapiurl",
+      "NUANCE_ADMIN_CLIENT_ID": "mockedAdminClientId",
+      "NUANCE_ADMIN_CLIENT_SECRET": "mockedAdminClientSecret",
+      "NUANCE_PROJECT_ID": "mockedProjectId"
+    }
+  }
+}

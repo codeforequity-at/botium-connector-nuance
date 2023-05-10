@@ -1,0 +1,245 @@
+{
+  "result": {
+    "interpretations": [
+      {
+        "single_intent_interpretation": {
+          "entities": {
+            "eDepartureDate": {
+              "entities": [
+                {
+                  "entities": {
+                    "DATE": {
+                      "entities": [
+                        {
+                          "entities": {
+                            "nuance_CALENDARX": {
+                              "entities": [
+                                {
+                                  "entities": {},
+                                  "metadata": {},
+                                  "text_range": {
+                                    "start_index": 18,
+                                    "end_index": 26
+                                  },
+                                  "confidence": 0.9597064256668091,
+                                  "origin": "STATISTICAL",
+                                  "literal": "tomorrow",
+                                  "sensitive": false,
+                                  "formatted_literal": "tomorrow",
+                                  "formatted_text_range": {
+                                    "start_index": 18,
+                                    "end_index": 26
+                                  },
+                                  "audio_range": null,
+                                  "struct_value": {
+                                    "fields": {
+                                      "nuance_CALENDAR": {
+                                        "structValue": {
+                                          "fields": {
+                                            "nuance_DATE": {
+                                              "structValue": {
+                                                "fields": {
+                                                  "nuance_DATE_REL": {
+                                                    "structValue": {
+                                                      "fields": {
+                                                        "nuance_STEP": {
+                                                          "stringValue": "day",
+                                                          "kind": "stringValue"
+                                                        },
+                                                        "nuance_INCREMENT": {
+                                                          "numberValue": 1,
+                                                          "kind": "numberValue"
+                                                        }
+                                                      }
+                                                    },
+                                                    "kind": "structValue"
+                                                  }
+                                                }
+                                              },
+                                              "kind": "structValue"
+                                            }
+                                          }
+                                        },
+                                        "kind": "structValue"
+                                      }
+                                    }
+                                  },
+                                  "value_union": "struct_value"
+                                }
+                              ]
+                            }
+                          },
+                          "metadata": {},
+                          "text_range": {
+                            "start_index": 18,
+                            "end_index": 26
+                          },
+                          "confidence": 0.9597064256668091,
+                          "origin": "STATISTICAL",
+                          "literal": "tomorrow",
+                          "sensitive": false,
+                          "formatted_literal": "tomorrow",
+                          "formatted_text_range": {
+                            "start_index": 18,
+                            "end_index": 26
+                          },
+                          "audio_range": null
+                        }
+                      ]
+                    }
+                  },
+                  "metadata": {},
+                  "text_range": {
+                    "start_index": 18,
+                    "end_index": 26
+                  },
+                  "confidence": 0.9597064256668091,
+                  "origin": "STATISTICAL",
+                  "literal": "tomorrow",
+                  "sensitive": false,
+                  "formatted_literal": "tomorrow",
+                  "formatted_text_range": {
+                    "start_index": 18,
+                    "end_index": 26
+                  },
+                  "audio_range": null
+                }
+              ]
+            }
+          },
+          "metadata": {},
+          "intent": "iBookFlight",
+          "confidence": 0.9976494908332825,
+          "origin": "STATISTICAL"
+        },
+        "interpretation_union": "single_intent_interpretation"
+      },
+      {
+        "single_intent_interpretation": {
+          "entities": {},
+          "metadata": {},
+          "intent": "iFlightStatus",
+          "confidence": 0.000567290117032826,
+          "origin": "STATISTICAL"
+        },
+        "interpretation_union": "single_intent_interpretation"
+      },
+      {
+        "single_intent_interpretation": {
+          "entities": {
+            "eDepartureDate": {
+              "entities": [
+                {
+                  "entities": {
+                    "DATE": {
+                      "entities": [
+                        {
+                          "entities": {
+                            "nuance_CALENDARX": {
+                              "entities": [
+                                {
+                                  "entities": {},
+                                  "metadata": {},
+                                  "text_range": {
+                                    "start_index": 18,
+                                    "end_index": 26
+                                  },
+                                  "confidence": 0.9597064256668091,
+                                  "origin": "STATISTICAL",
+                                  "literal": "tomorrow",
+                                  "sensitive": false,
+                                  "formatted_literal": "tomorrow",
+                                  "formatted_text_range": {
+                                    "start_index": 18,
+                                    "end_index": 26
+                                  },
+                                  "audio_range": null,
+                                  "struct_value": {
+                                    "fields": {
+                                      "nuance_CALENDAR": {
+                                        "structValue": {
+                                          "fields": {
+                                            "nuance_DATE": {
+                                              "structValue": {
+                                                "fields": {
+                                                  "nuance_DATE_REL": {
+                                                    "structValue": {
+                                                      "fields": {
+                                                        "nuance_STEP": {
+                                                          "stringValue": "day",
+                                                          "kind": "stringValue"
+                                                        },
+                                                        "nuance_INCREMENT": {
+                                                          "numberValue": 1,
+                                                          "kind": "numberValue"
+                                                        }
+                                                      }
+                                                    },
+                                                    "kind": "structValue"
+                                                  }
+                                                }
+                                              },
+                                              "kind": "structValue"
+                                            }
+                                          }
+                                        },
+                                        "kind": "structValue"
+                                      }
+                                    }
+                                  },
+                                  "value_union": "struct_value"
+                                }
+                              ]
+                            }
+                          },
+                          "metadata": {},
+                          "text_range": {
+                            "start_index": 18,
+                            "end_index": 26
+                          },
+                          "confidence": 0.9597064256668091,
+                          "origin": "STATISTICAL",
+                          "literal": "tomorrow",
+                          "sensitive": false,
+                          "formatted_literal": "tomorrow",
+                          "formatted_text_range": {
+                            "start_index": 18,
+                            "end_index": 26
+                          },
+                          "audio_range": null
+                        }
+                      ]
+                    }
+                  },
+                  "metadata": {},
+                  "text_range": {
+                    "start_index": 18,
+                    "end_index": 26
+                  },
+                  "confidence": 0.9597064256668091,
+                  "origin": "STATISTICAL",
+                  "literal": "tomorrow",
+                  "sensitive": false,
+                  "formatted_literal": "tomorrow",
+                  "formatted_text_range": {
+                    "start_index": 18,
+                    "end_index": 26
+                  },
+                  "audio_range": null
+                }
+              ]
+            }
+          },
+          "metadata": {},
+          "intent": "iEntities",
+          "confidence": 0.00019170483574271202,
+          "origin": "STATISTICAL"
+        },
+        "interpretation_union": "single_intent_interpretation"
+      }
+    ],
+    "literal": "book a flight for tomorrow",
+    "sensitive": false,
+    "formatted_literal": "book a flight for tomorrow"
+  }
+}

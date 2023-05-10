@@ -1,0 +1,51 @@
+rich conversation
+
+#bot
+Hi I'm Windborne Airlines' virtual assistant.
+
+#bot
+I can help with lots of things, like your Flight Status, Booking a Flight or Looking for Lost Luggage. How can I help you today?
+
+#me
+book a flight for tomorrow
+
+#bot
+INTENT iBookFlight
+ENTITY_CONTENT eDepartureDate|tomorrow
+Sure I can help you with that.
+
+#bot
+Where do you want to go?
+BUTTONS Phoenix
+
+#me
+BUTTON Phoenix
+
+#bot
+INTENT NO_INTENT
+ENTITY_CONTENT eCity|phoenix
+And where are you leaving from?
+BUTTONS Atlanta
+
+#me
+atlanta
+
+#bot
+INTENT NO_INTENT
+ENTITY_CONTENT eCity|Atlanta
+Here's what I got: a flight from Atlanta to Phoenix leaving on
+
+#bot
+If you want to change something, just let me know the new information. Otherwise, should I look up some flights for you?
+BUTTONS YES|No
+
+#me
+BUTTON No
+
+#bot
+INTENT NO_INTENT
+No problem.
+ENTITY_CONTENT nuance_BOOLEAN|No
+
+#bot
+I can help with lots of things, like your Flight Status, Booking a Flight or Looking for Lost Luggage. How can I help you today?
