@@ -81,6 +81,8 @@ const _importIt = async ({ caps }) => {
  * @returns {Promise<{utterances: *, convos: *}>}
  */
 const importNuanceIntents = async ({ caps, buildconvos }) => {
+  // TODO
+  console.log(`caps ===> ${JSON.stringify(caps)}`)
   try {
     const connector = new BotiumConnectorNuance({ caps })
     await connector.Validate()
@@ -89,7 +91,7 @@ const importNuanceIntents = async ({ caps, buildconvos }) => {
       throw new Error('NUANCE_API_URL capability is required')
     }
     if (!caps[Capabilities.NUANCE_ADMIN_CLIENT_ID]) {
-      throw new Error('NUANCE_ADMIN_CLIENT_ID capability is required')
+      throw new Error('NUANCE_ADMIN_CLIENT_ID capability is required' + JSON.stringify(caps))
     }
     if (!caps[Capabilities.NUANCE_ADMIN_CLIENT_SECRET]) {
       throw new Error('NUANCE_ADMIN_CLIENT_SECRET capability is required')
@@ -163,14 +165,27 @@ const exportNuanceIntents = async ({ caps, uploadmode }, { convos, utterances },
     const { rawUtterances, zip, nluJSON, xmlFileName, accessToken } = await _importIt({ caps })
 
     let samples
+    let intents
     if (uploadmode === 'replace') {
       samples = []
       nluJSON.elements.find(e => e.name === 'project').elements.find(e => e.name === 'samples').elements = samples
+      intents = []
+      nluJSON.elements.find(e => e.name === 'project').elements.find(e => e.name === 'ontology').elements.find(e => e.name === 'intents').elements = intents
     } else {
       samples = nluJSON.elements.find(e => e.name === 'project').elements.find(e => e.name === 'samples').elements
+      intents = nluJSON.elements.find(e => e.name === 'project').elements.find(e => e.name === 'ontology').elements.find(e => e.name === 'intents').elements
     }
 
     for (const { name, utterances: list } of utterances) {
+      if (!intents.find(intent => intent.attributes.name === name)) {
+        intents.push({
+          type: 'element',
+          name: 'intent',
+          attributes: {
+            name: name
+          }
+        })
+      }
       for (const u of list) {
         if (uploadmode === 'replace' || !rawUtterances[name] || rawUtterances[name].utterances.indexOf(u) < 0) {
           samples.push({
@@ -231,10 +246,33 @@ const exportNuanceIntents = async ({ caps, uploadmode }, { convos, utterances },
         await new Promise(resolve => setTimeout(resolve, 1000))
       }
     }
-    if (resStatus.status !== 'COMPLETED') {
+    if (!['COMPLETED', 'PARTIALLY_COMPLETED'].includes(resStatus.status)) {
       throw new Error(`Export failed ${JSON.stringify(resStatus, null, 2)}`)
     }
 
+      // We get errors if we want to add utterance to intent existing in other utterance
+      // {
+      // "report": {
+      //   "replaceProjectDialogReports": {
+      //     "reports": [
+      //       {
+      //         "status": "COMPLETED",
+      //         "createTime": "2023-05-11T12:49:09Z"
+      //       }
+      //     ]
+      //   },
+      //   "replaceProjectContentReports": {
+      //     "reports": [
+      //       {
+      //         "errors": {
+      //           "errors": [
+      //             {
+      //               "message": "The sample 'delme 2' already exists in intent 'iBookFlight'.",
+    for (const report of resStatus.report?.replaceProjectContentReports?.reports || []) {
+      for (const error of report?.errors?.errors || []) {
+        status(error.message)
+      }
+    }
     status('File exported to Nuance successful')
   } catch (err) {
     throw new Error(`Export process failed: ${err.message}`)

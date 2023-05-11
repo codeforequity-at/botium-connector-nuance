@@ -11,9 +11,15 @@ describe('exporthandler', function () {
       utterances: [
         {
           name: 'iBookFlight',
-          utterances: ['book a flight to New York from Cleveland tomorrow', 'booking a flight']
+          utterances: ['flight status', 'book a flight']
+        },
+        {
+          name: 'somenewintent',
+          utterances: ['something new delme please now!!!!!!!!!!!!!!!']
         }
       ]
+    }, {
+      statusCallback: (data) => console.log(data)
     })
-  }).timeout(20000)
+  }).timeout(50000)
 })
