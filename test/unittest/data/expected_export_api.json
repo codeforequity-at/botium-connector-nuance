@@ -165,6 +165,13 @@
                   "attributes": {
                     "name": "iFlightStatus"
                   }
+                },
+                {
+                  "type": "element",
+                  "name": "intent",
+                  "attributes": {
+                    "name": "not existing intent"
+                  }
                 }
               ]
             },
