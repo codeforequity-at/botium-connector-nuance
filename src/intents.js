@@ -250,24 +250,24 @@ const exportNuanceIntents = async ({ caps, uploadmode }, { convos, utterances },
       throw new Error(`Export failed ${JSON.stringify(resStatus, null, 2)}`)
     }
 
-      // We get errors if we want to add utterance to intent existing in other utterance
-      // {
-      // "report": {
-      //   "replaceProjectDialogReports": {
-      //     "reports": [
-      //       {
-      //         "status": "COMPLETED",
-      //         "createTime": "2023-05-11T12:49:09Z"
-      //       }
-      //     ]
-      //   },
-      //   "replaceProjectContentReports": {
-      //     "reports": [
-      //       {
-      //         "errors": {
-      //           "errors": [
-      //             {
-      //               "message": "The sample 'delme 2' already exists in intent 'iBookFlight'.",
+    // We get errors if we want to add utterance to intent existing in other utterance
+    // {
+    // "report": {
+    //   "replaceProjectDialogReports": {
+    //     "reports": [
+    //       {
+    //         "status": "COMPLETED",
+    //         "createTime": "2023-05-11T12:49:09Z"
+    //       }
+    //     ]
+    //   },
+    //   "replaceProjectContentReports": {
+    //     "reports": [
+    //       {
+    //         "errors": {
+    //           "errors": [
+    //             {
+    //               "message": "The sample 'delme 2' already exists in intent 'iBookFlight'.",
     for (const report of resStatus.report?.replaceProjectContentReports?.reports || []) {
       for (const error of report?.errors?.errors || []) {
         status(error.message)
