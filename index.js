@@ -1,8 +1,18 @@
 const BotiumConnectorNuance = require('./src/connector')
+const { importHandler, importArgs } = require('./src/intents')
+const { exportHandler, exportArgs } = require('./src/intents')
 
 module.exports = {
   PluginVersion: 1,
   PluginClass: BotiumConnectorNuance,
+  Import: {
+    Handler: importHandler,
+    Args: importArgs
+  },
+  Export: {
+    Handler: exportHandler,
+    Args: exportArgs
+  },
   PluginDesc: {
     name: 'Nuance Mix',
     provider: 'Nuance Communications Inc',
