@@ -1,4 +1,6 @@
 const path = require('path')
+const fs = require('fs')
+
 const grpc = require('@grpc/grpc-js')
 const axios = require('axios')
 const protoLoader = require('@grpc/proto-loader')
@@ -69,14 +71,33 @@ class BotiumConnectorNuance {
 
   Validate () {
     debug('Validate called')
+    if (!this.caps[Capabilities.NUANCE_CLIENT_ID]) throw new Error('NUANCE_CLIENT_ID capability required')
+    if (!this.caps[Capabilities.NUANCE_CLIENT_SECRET]) throw new Error('NUANCE_CLIENT_SECRET capability required')
+    if (!this.caps[Capabilities.NUANCE_CONTEXT_TAG]) throw new Error('NUANCE_CONTEXT_TAG capability required')
+    if (!this.caps[Capabilities.NUANCE_CHANNEL]) throw new Error('NUANCE_CHANNEL capability required')
     this.caps = Object.assign({}, this.caps)
   }
 
   async Start () {
     debug('Start called')
 
+    const toProtoFilePath = (file) => {
+      const res1 = path.join(__dirname, '..', file)
+      if (fs.existsSync(res1)) {
+        // development environment
+        return res1
+      }
+
+      const res2 = path.join(__dirname, file)
+      if (fs.existsSync(res2)) {
+        // prod environment
+        return res2
+      }
+
+      throw new Error(`Proto file not found: "${file}" (as $"{res1}" or "${res2})"`)
+    }
     const packageDefinition = protoLoader.loadSync(
-      PROTOFILES.map(file => path.join(__dirname, '..', file)),
+      PROTOFILES.map(file => toProtoFilePath(file)),
       {
         keepCase: true,
         longs: String,
