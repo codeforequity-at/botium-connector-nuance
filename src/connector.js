@@ -94,7 +94,7 @@ class BotiumConnectorNuance {
         return res2
       }
 
-      throw new Error(`Proto file not found: "${file}" (as $"{res1}" or "${res2})"`)
+      throw new Error(`Proto file not found: "${file}" (as "${res1}" or "${res2})"`)
     }
     const packageDefinition = protoLoader.loadSync(
       PROTOFILES.map(file => toProtoFilePath(file)),
