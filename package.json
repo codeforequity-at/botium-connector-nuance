@@ -1,7 +1,7 @@
 {
   "name": "botium-connector-nuance",
-  "version": "1.0.1",
-  "description": "Botium Connector for Azure Conversational Language Understanding",
+  "version": "1.0.2",
+  "description": "Botium Connector for Nuance",
   "main": "dist/botium-connector-nuance-cjs.js",
   "module": "dist/botium-connector-nuance-es.js",
   "bin": {
