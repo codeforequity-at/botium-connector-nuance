@@ -4,6 +4,7 @@ const fs = require('fs')
 const grpc = require('@grpc/grpc-js')
 const axios = require('axios')
 const protoLoader = require('@grpc/proto-loader')
+const googleProtoFiles = require('google-proto-files')
 const debug = require('debug')('botium-connector-nuance')
 const _ = require('lodash')
 const Capabilities = require('./Capabilities')
@@ -114,7 +115,10 @@ class BotiumConnectorNuance {
         enums: String,
         defaults: true,
         oneofs: true,
-        includeDirs: [path.join(__dirname, '..', 'proto')] // On non-local dev environment import from a proto file to another does not work without this
+        includeDirs: [
+          path.join(__dirname, '..', 'proto'), // another way to load imported proto files
+          googleProtoFiles.getProtoPath() // this is not required on local, but somehow required on dev server, and I suppose on prod too
+        ]
       })
     debug('Loading proto files')
     const proto = grpc.loadPackageDefinition(packageDefinition)
