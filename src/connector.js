@@ -81,16 +81,19 @@ class BotiumConnectorNuance {
   async Start () {
     debug('Start called')
 
+    // nuance/asr/v1/resource.proto
+    // proto/asr/v1/resource.proto
+    // /app/server/node_modules/botium-connector-nuance/proto/asr/v1/nuance/asr/v1/resource.proto
     const toProtoFilePath = (file) => {
       const res1 = path.join(__dirname, '..', file)
       if (fs.existsSync(res1)) {
-        // development environment
+        debug(`Proto file found, dev environment: ${res1}`)
         return res1
       }
 
       const res2 = path.join(__dirname, file)
       if (fs.existsSync(res2)) {
-        // prod environment
+        debug(`Proto file found, prod environment: ${res2}`)
         return res2
       }
 
@@ -105,7 +108,9 @@ class BotiumConnectorNuance {
         defaults: true,
         oneofs: true
       })
+    debug('Loading proto files')
     const proto = grpc.loadPackageDefinition(packageDefinition)
+    debug('Loading proto files loaded')
     const callCredentials = grpc.credentials.createFromMetadataGenerator(async (params, callback) => {
       let accessToken = 'Placeholder'
       try {
