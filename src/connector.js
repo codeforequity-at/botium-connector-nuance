@@ -26,23 +26,26 @@ const DEFAULTS = {
   [Capabilities.NUANCE_NLU_ENTITY_VALUE_MODE]: 'FORCE_LITERAL'
 }
 
+// Local env: imported files must not be here anymore because protoLoader finds them via includeDirs.
+// So definition of the imported files is duplicated.
+// Dev/prod environments: it has to be a difference between local, and dev/prod environments. Before this change protoLoader
+// did not find imported files just on dev/prod. So to be sure I kept duplicated import-file-definitions.
 const PROTOFILES = [
-  'proto/asr/v1/recognizer.proto',
-  'proto/asr/v1/resource.proto',
-  'proto/asr/v1/result.proto',
-  'proto/dlg/v1/dlg_interface.proto',
-  'proto/dlg/v1/dlg_messages.proto',
-  'proto/dlg/v1/common/dlg_common_messages.proto',
-  'proto/nlu/v1/interpretation-common.proto',
-  'proto/nlu/v1/multi-intent-interpretation.proto',
-  'proto/nlu/v1/result.proto',
-  'proto/nlu/v1/runtime.proto',
-  'proto/nlu/v1/single-intent-interpretation.proto',
-  'proto/rpc/error_details.proto',
-  'proto/rpc/status.proto',
-  'proto/rpc/status_code.proto',
-  'proto/tts/v1/nuance_tts_v1.proto'
-
+  'proto/nuance/asr/v1/recognizer.proto',
+  'proto/nuance/asr/v1/resource.proto',
+  'proto/nuance/asr/v1/result.proto',
+  'proto/nuance/dlg/v1/dlg_interface.proto',
+  'proto/nuance/dlg/v1/dlg_messages.proto',
+  'proto/nuance/dlg/v1/common/dlg_common_messages.proto',
+  'proto/nuance/nlu/v1/interpretation-common.proto',
+  'proto/nuance/nlu/v1/multi-intent-interpretation.proto',
+  'proto/nuance/nlu/v1/result.proto',
+  'proto/nuance/nlu/v1/runtime.proto',
+  'proto/nuance/nlu/v1/single-intent-interpretation.proto',
+  'proto/nuance/rpc/error_details.proto',
+  'proto/nuance/rpc/status.proto',
+  'proto/nuance/rpc/status_code.proto',
+  'proto/nuance/tts/v1/nuance_tts_v1.proto'
 ]
 
 const getGrpcError = (error, res) => {
@@ -84,6 +87,7 @@ class BotiumConnectorNuance {
     // nuance/asr/v1/resource.proto
     // proto/asr/v1/resource.proto
     // /app/server/node_modules/botium-connector-nuance/proto/asr/v1/nuance/asr/v1/resource.proto
+    // maybe this dynamic loading is not required?
     const toProtoFilePath = (file) => {
       const res1 = path.join(__dirname, '..', file)
       if (fs.existsSync(res1)) {
@@ -99,14 +103,18 @@ class BotiumConnectorNuance {
 
       throw new Error(`Proto file not found: "${file}" (as "${res1}" or "${res2})"`)
     }
+    const protoFilePaths = PROTOFILES.map(file => toProtoFilePath(file))
+    const protoRoot = path.join(__dirname, '..', 'proto')
+    debug(`Loading proto file definitions using root ${protoRoot}`)
     const packageDefinition = protoLoader.loadSync(
-      PROTOFILES.map(file => toProtoFilePath(file)),
+      protoFilePaths,
       {
         keepCase: true,
         longs: String,
         enums: String,
         defaults: true,
-        oneofs: true
+        oneofs: true,
+        includeDirs: [path.join(__dirname, '..', 'proto')] // On non-local dev environment import from a proto file to another does not work without this
       })
     debug('Loading proto files')
     const proto = grpc.loadPackageDefinition(packageDefinition)
@@ -292,7 +300,7 @@ class BotiumConnectorNuance {
               }
 
               // node
-              // as I see an entry cant be booth node and leaf?
+              // as I see an entry cant be both node and leaf?
               // https://docs.nuance.com/mix/apis/nlu-grpc/v1/ref-topics/interpretation-results-entities/#relationship-entity
               if (struct.entities) {
                 for (const entry of _.isArray(struct.entities) ? struct.entities : Object.values(struct.entities)) {
