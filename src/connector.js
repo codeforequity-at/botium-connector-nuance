@@ -106,7 +106,8 @@ class BotiumConnectorNuance {
     }
     const protoFilePaths = PROTOFILES.map(file => toProtoFilePath(file))
     const protoRoot = path.join(__dirname, '..', 'proto')
-    debug(`Loading proto file definitions using root ${protoRoot}`)
+    const googleProtoPath = googleProtoFiles.getProtoPath('..')
+    debug(`Loading proto file definitions using root ${protoRoot} and google proto path ${googleProtoPath}`)
     const packageDefinition = protoLoader.loadSync(
       protoFilePaths,
       {
@@ -117,7 +118,7 @@ class BotiumConnectorNuance {
         oneofs: true,
         includeDirs: [
           path.join(__dirname, '..', 'proto'), // another way to load imported proto files
-          googleProtoFiles.getProtoPath() // this is not required on local, but somehow required on dev server, and I suppose on prod too
+          googleProtoPath // this is not required on local, but somehow required on dev server, and I suppose on prod too
         ]
       })
     debug('Loading proto files')
