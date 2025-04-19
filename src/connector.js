@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const util = require('util')
 
 const grpc = require('@grpc/grpc-js')
 const axios = require('axios')
@@ -7,8 +8,10 @@ const protoLoader = require('@grpc/proto-loader')
 const googleProtoFiles = require('google-proto-files')
 const debug = require('debug')('botium-connector-nuance')
 const _ = require('lodash')
+
 const Capabilities = require('./Capabilities')
 const { authenticate } = require('./helper')
+const { struct } = require('./structJson')
 
 const DEFAULTS = {
   [Capabilities.NUANCE_OAUTH_URL]: 'https://auth.crt.nuance.com/oauth2/token',
@@ -50,11 +53,12 @@ const PROTOFILES = [
 ]
 
 const getGrpcError = (error, res) => {
-  const obj = error || (res?.status?.code >= 400 ? res.status : null)
-
-  if (obj) {
-    return Object.assign({}, obj, { message: obj.details })
+  if (error?.code) {
+    debug(`GRPC error: ${error.message}, (${error.code}), (${error.details})`)
+    return new Error(`${error.message}, (${error.code})`)
   }
+
+  return error
 }
 
 class BotiumConnectorNuance {
@@ -147,8 +151,19 @@ class BotiumConnectorNuance {
     this.nluService = new proto.nuance.nlu.v1.Runtime(this.caps[Capabilities.NUANCE_NLU_ENDPOINT], credentials)
     this.testContext && this.testContext.nluService(this.nluService)
 
+    const toGrpcStructWeak = (obj) => {
+      try {
+        if (obj && !obj.fields) {
+          return struct.encode(obj)
+        }
+      } catch (e) {
+        debug(`Failed to convert to grpc, fall back to non-converted value: ${util.inspect(obj)}`)
+      }
+
+      return obj
+    }
     return this.bottleneck(new Promise((resolve, reject) => {
-      this.dialogService.Start({
+      const startParams = {
         session_id: this.caps[Capabilities.NUANCE_SESSION_ID],
         selector: this.selector,
         payload: {
@@ -156,17 +171,20 @@ class BotiumConnectorNuance {
             uri: `urn:nuance-mix:tag:model/${this.caps[Capabilities.NUANCE_CONTEXT_TAG]}/mix.dialog`,
             type: 0
           },
-          data: this.caps[Capabilities.NUANCE_INITIAL_CONTEXT],
+          data: toGrpcStructWeak(this.caps[Capabilities.NUANCE_INITIAL_CONTEXT]),
           suppress_log_user_data: this.caps[Capabilities.NUANCE_SUPPRESS_LOG_USER_DATA]
         },
         session_timeout_sec: this.caps[Capabilities.NUANCE_SESSION_TIMEOUT_SEC],
         user_id: this.caps[Capabilities.NUANCE_USER_ID],
         client_data: this.caps[Capabilities.NUANCE_CLIENT_DATA]
-      }, async (error, res) => {
+      }
+
+      debug(`Starting conversation: ${JSON.stringify(startParams)}`)
+
+      this.dialogService.Start(startParams, async (error, res) => {
         const grpcError = getGrpcError(error, res)
         if (grpcError) {
-          debug(`Failed to init session: ${grpcError.message}`)
-          return reject(grpcError)
+          return reject(new Error(`Failed to init session: ${grpcError.message}`))
         }
         debug(`Init session successful: ${JSON.stringify(res)}`)
         if (res?.payload?.session_id) {
@@ -187,7 +205,7 @@ class BotiumConnectorNuance {
           return resolve()
         } catch (err) {
           debug(`Welcome message request failed: ${err.message || err}`)
-          return reject(err)
+          return reject(new Error(`Failed to send welcome message: ${err.message || err}`))
         }
       })
     }))
@@ -220,7 +238,7 @@ class BotiumConnectorNuance {
               debug(`Failed to terminate session, It has to be already terminated by chatbot (${error.message})`)
               resolve(error)
             }
-            return reject(error)
+            return reject(`Failed to stop conversation: ${grpcError.message}`)
           }
           debug('Session terminated')
           return resolve(res)
@@ -359,8 +377,9 @@ class BotiumConnectorNuance {
         selector: this.selector,
         payload: { user_input: messageText ? { user_text: messageText } : null }
       }, (error, res) => {
-        if (error) {
-          return reject(error)
+        const grpcError = getGrpcError(error, res)
+        if (grpcError) {
+          return reject(`Failed to send message: ${grpcError.message}`)
         }
         return resolve(res)
       })
@@ -384,8 +403,9 @@ class BotiumConnectorNuance {
             text: messageText
           }
         }, (error, res) => {
-          if (getGrpcError(error, res)) {
-            return reject(getGrpcError(error, res))
+          const grpcError = getGrpcError(error, res)
+          if (grpcError) {
+            return reject(`Failed to retrieve NLP info: ${grpcError.message}`)
           }
           return resolve(res)
         })
