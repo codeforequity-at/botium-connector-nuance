@@ -81,8 +81,6 @@ const _importIt = async ({ caps }) => {
  * @returns {Promise<{utterances: *, convos: *}>}
  */
 const importNuanceIntents = async ({ caps, buildconvos }) => {
-  // TODO
-  console.log(`caps ===> ${JSON.stringify(caps)}`)
   try {
     const connector = new BotiumConnectorNuance({ caps })
     await connector.Validate()
@@ -91,7 +89,7 @@ const importNuanceIntents = async ({ caps, buildconvos }) => {
       throw new Error('NUANCE_API_URL capability is required')
     }
     if (!caps[Capabilities.NUANCE_ADMIN_CLIENT_ID]) {
-      throw new Error('NUANCE_ADMIN_CLIENT_ID capability is required' + JSON.stringify(caps))
+      throw new Error('NUANCE_ADMIN_CLIENT_ID capability is required')
     }
     if (!caps[Capabilities.NUANCE_ADMIN_CLIENT_SECRET]) {
       throw new Error('NUANCE_ADMIN_CLIENT_SECRET capability is required')
