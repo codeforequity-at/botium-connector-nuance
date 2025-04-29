@@ -162,7 +162,6 @@ class BotiumConnectorNuance {
 
       return obj
     }
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     return this.bottleneck(() => new Promise((resolve, reject) => {
       const startParams = {
         session_id: this.caps[Capabilities.NUANCE_SESSION_ID],
