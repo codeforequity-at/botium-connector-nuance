@@ -162,7 +162,7 @@ class BotiumConnectorNuance {
 
       return obj
     }
-    return this.bottleneck(new Promise((resolve, reject) => {
+    return this.bottleneck(() => new Promise((resolve, reject) => {
       const startParams = {
         session_id: this.caps[Capabilities.NUANCE_SESSION_ID],
         selector: this.selector,
@@ -223,7 +223,7 @@ class BotiumConnectorNuance {
   async Stop () {
     debug('Stop called')
     if (this.sessionId && this.dialogService) {
-      return this.bottleneck(new Promise((resolve, reject) => {
+      return this.bottleneck(() => new Promise((resolve, reject) => {
         this.dialogService.Stop({
           session_id: this.sessionId
         }, (error, res) => {
