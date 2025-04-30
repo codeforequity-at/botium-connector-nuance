@@ -65,7 +65,7 @@ class BotiumConnectorNuance {
   constructor ({ queueBotSays, caps, bottleneck, testContext }) {
     this.queueBotSays = queueBotSays
     this.caps = Object.assign({}, DEFAULTS, caps)
-    this.bottleneck = bottleneck || ((promise) => promise)
+    this.bottleneck = bottleneck || ((fn) => fn())
     this.testContext = testContext
     this.sessionId = null
     this.accessToken = null
@@ -238,7 +238,7 @@ class BotiumConnectorNuance {
               debug(`Failed to terminate session, It has to be already terminated by chatbot (${error.message})`)
               resolve(error)
             }
-            return reject(`Failed to stop conversation: ${grpcError.message}`)
+            return reject(new Error(`Failed to stop conversation: ${grpcError.message}`))
           }
           debug('Session terminated')
           return resolve(res)
@@ -379,7 +379,7 @@ class BotiumConnectorNuance {
       }, (error, res) => {
         const grpcError = getGrpcError(error, res)
         if (grpcError) {
-          return reject(`Failed to send message: ${grpcError.message}`)
+          return reject(new Error(`Failed to send message: ${grpcError.message}`))
         }
         return resolve(res)
       })
@@ -405,7 +405,7 @@ class BotiumConnectorNuance {
         }, (error, res) => {
           const grpcError = getGrpcError(error, res)
           if (grpcError) {
-            return reject(`Failed to retrieve NLP info: ${grpcError.message}`)
+            return reject(new Error(`Failed to retrieve NLP info: ${grpcError.message}`))
           }
           return resolve(res)
         })
