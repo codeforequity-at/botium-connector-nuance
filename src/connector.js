@@ -70,6 +70,7 @@ class BotiumConnectorNuance {
     this.sessionId = null
     this.accessToken = null
     this.accessTokenExpires = null
+    this.isFirstRequest = true
     this.selector = {
       channel: this.caps[Capabilities.NUANCE_CHANNEL],
       language: this.caps[Capabilities.NUANCE_LANGUAGE],
@@ -212,10 +213,14 @@ class BotiumConnectorNuance {
   }
 
   async UserSays (msg) {
-    await new Promise((resolve) => setTimeout(() => resolve(), 1000))
     debug('UserSays called')
     debug(`Sending message ${JSON.stringify(msg)}`)
-    const res = await Promise.all(this._sendMessage(msg))
+    let res = await Promise.all(this._sendMessage(msg))
+    if (this.isFirstRequest && this.caps[Capabilities.NUANCE_REDO_FIRST_REQUEST]) {
+      this.isFirstRequest = false
+      debug(`Response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated: ${JSON.stringify(res)}`)
+      res = await Promise.all(this._sendMessage(msg))
+    }
     debug(`Response received: ${JSON.stringify(res)}`)
     await this._handleResponse(res)
   }
