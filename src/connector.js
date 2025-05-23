@@ -227,7 +227,7 @@ class BotiumConnectorNuance {
           debug(`Redo first: First response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated and there is no NLP response: ${JSON.stringify(res)}`)
         }
         res = await Promise.all(this._sendMessage(msg))
-      } else if (!intents || intents.length === 0  || !intents[0].name) {
+      } else if (!intents || intents.length === 0 || !intents[0].name) {
         debug(`Redo first: First response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated and intent not detected: ${JSON.stringify(res)}`)
         res = await Promise.all(this._sendMessage(msg))
       } else {
