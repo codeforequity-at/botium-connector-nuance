@@ -218,8 +218,21 @@ class BotiumConnectorNuance {
     let res = await Promise.all(this._sendMessage(msg))
     if (this.isFirstRequest && this.caps[Capabilities.NUANCE_REDO_FIRST_REQUEST]) {
       this.isFirstRequest = false
-      debug(`Response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated: ${JSON.stringify(res)}`)
-      res = await Promise.all(this._sendMessage(msg))
+      const nlpResponse = res[1]
+      const intents = this.mapToIntents(nlpResponse)
+      if (!nlpResponse) {
+        if (this.caps[Capabilities.NUANCE_NLP_ANALYTICS_ENABLE]) {
+          debug(`Redo first: First response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated and NLP Analytics disabled: ${JSON.stringify(res)}`)
+        } else {
+          debug(`Redo first: First response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated and there is no NLP response: ${JSON.stringify(res)}`)
+        }
+        res = await Promise.all(this._sendMessage(msg))
+      } else if (!intents || intents.length === 0  || !intents[0].name) {
+        debug(`Redo first: First response received, but dropped because NUANCE_REDO_FIRST_REQUEST is activated and intent not detected: ${JSON.stringify(res)}`)
+        res = await Promise.all(this._sendMessage(msg))
+      } else {
+        debug(`Redo first: First response received and kept because intent detected: ${intents[0].name}`)
+      }
     }
     debug(`Response received: ${JSON.stringify(res)}`)
     await this._handleResponse(res)
@@ -261,6 +274,13 @@ class BotiumConnectorNuance {
     this.nluService = null
   }
 
+  mapToIntents (nlpResponse) {
+    return nlpResponse?.result?.interpretations?.map(({ single_intent_interpretation }) => ({
+      name: single_intent_interpretation.intent,
+      confidence: single_intent_interpretation.confidence
+    }))
+  }
+
   async _handleResponse ([response, nlpResponse]) {
     const botMsg = { sourceData: [response, nlpResponse] }
     if (nlpResponse) {
@@ -269,10 +289,7 @@ class BotiumConnectorNuance {
       } else {
         botMsg.nlp = {}
         /* eslint-disable camelcase */
-        const intents = nlpResponse.result?.interpretations?.map(({ single_intent_interpretation }) => ({
-          name: single_intent_interpretation.intent,
-          confidence: single_intent_interpretation.confidence
-        }))
+        const intents = this.mapToIntents(nlpResponse)
         /* eslint-enable camelcase */
         if (intents && intents.length > 0) {
           botMsg.nlp.intent = {
@@ -350,12 +367,13 @@ class BotiumConnectorNuance {
         }
       }
     }
-
+    let messageProcessed = false
     for (const message of response.payload.messages || []) {
       const messageText = message.visual.map(({ text }) => text).join('\n')
       const toSend = Object.assign({}, botMsg, { messageText })
       debug(`Extacted message ${JSON.stringify(Object.assign({}, toSend, { sourceData: '...' }))}`)
       setTimeout(() => this.queueBotSays(toSend), 0)
+      messageProcessed = true
     }
     if (response.payload.qa_action?.message.visual?.length) {
       const toSend = Object.assign({}, botMsg, {
@@ -372,6 +390,12 @@ class BotiumConnectorNuance {
       }
       debug(`Extacted message ${JSON.stringify(Object.assign({}, toSend, { sourceData: '...' }))}`)
       setTimeout(() => this.queueBotSays(toSend), 0)
+      messageProcessed = true
+    }
+
+    if (!messageProcessed && (botMsg.nlp?.intent || botMsg.nlp?.entities?.length)) {
+      debug(`Extacted message (just NLP) ${JSON.stringify(Object.assign({}, botMsg, { sourceData: '...' }))}`)
+      setTimeout(() => this.queueBotSays(botMsg), 0)
     }
   }
 
