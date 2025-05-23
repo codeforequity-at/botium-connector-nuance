@@ -275,6 +275,7 @@ class BotiumConnectorNuance {
   }
 
   mapToIntents (nlpResponse) {
+    /* eslint-disable camelcase */
     return nlpResponse?.result?.interpretations?.map(({ single_intent_interpretation }) => ({
       name: single_intent_interpretation.intent,
       confidence: single_intent_interpretation.confidence
@@ -288,9 +289,7 @@ class BotiumConnectorNuance {
         debug(`NLP response, illegal status code: ${nlpResponse}`)
       } else {
         botMsg.nlp = {}
-        /* eslint-disable camelcase */
         const intents = this.mapToIntents(nlpResponse)
-        /* eslint-enable camelcase */
         if (intents && intents.length > 0) {
           botMsg.nlp.intent = {
             name: intents[0].name,
