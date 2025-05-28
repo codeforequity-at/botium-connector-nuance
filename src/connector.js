@@ -54,7 +54,9 @@ const PROTOFILES = [
 
 const getGrpcError = (error, res) => {
   if (error?.code) {
-    debug(`GRPC error: ${error.message}, (${error.code}), (${error.details})`)
+    if (error.code === 5 && error.message?.indexOf('Could not find session for') >= 0) {
+      return new Error(`Session is already terminated, (${error.code})`)
+    }
     return new Error(`${error.message}, (${error.code})`)
   }
 
@@ -252,7 +254,7 @@ class BotiumConnectorNuance {
           this.nluService = null
           const grpcError = getGrpcError(error, res)
           if (grpcError) {
-            if (grpcError.message && grpcError.message.startsWith('5 NOT_FOUND: Could not find session for')) {
+            if (grpcError.message && grpcError.message.indexOf('Could not find session for') >= 0) {
               debug(`Failed to terminate session, It has to be already terminated by chatbot (${error.message})`)
               resolve(error)
             }
