@@ -1,10 +1,15 @@
-const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
+import { createRequire } from 'module'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+import createDebug from 'debug'
+import Connector from '../../src/connector.js'
+
+const require = createRequire(import.meta.url)
+
 chai.use(chaiAsPromised)
 const assert = chai.assert
-const debug = require('debug')('botium-connector-nuance-unittest-connector')
+const debug = createDebug('botium-connector-nuance-unittest-connector')
 
-const Connector = require('../../src/connector')
 const capsWithNlp = require('./data/mocked_botium_full.json').botium.Capabilities
 
 const USER_MESSAGE_WELCOME = 'WELCOME'
@@ -21,18 +26,18 @@ const REQUEST_TO_RESPONSE = {
           {
             visual: [
               {
-                text: "mockedMessage"
+                text: 'mockedMessage'
               }
-            ],
+            ]
           }
         ],
         qa_action: {
           message: {
-            "visual": [
+            visual: [
               {
-                "text": "mockedQaText"
+                text: 'mockedQaText'
               }
-            ],
+            ]
           }
         }
       }
@@ -40,43 +45,43 @@ const REQUEST_TO_RESPONSE = {
     nlpResponse: 'It is not called at all',
     expectedBotiumMessages: [
       {
-        messageText: "mockedMessage"
+        messageText: 'mockedMessage'
       }, {
-        messageText: "mockedQaText"
+        messageText: 'mockedQaText'
       }
     ]
   },
-  "Show me buttons": {
-    request: "Show me buttons",
-    "response": {
-      "payload": {
-        "qa_action": {
-          "message": {
-            "visual": [
+  'Show me buttons': {
+    request: 'Show me buttons',
+    response: {
+      payload: {
+        qa_action: {
+          message: {
+            visual: [
               {
-                "text": "Where do you want to go?"
+                text: 'Where do you want to go?'
               }
             ]
           },
-          "selectable": {
-            "selectable_items": [
+          selectable: {
+            selectable_items: [
               {
-                "value": {
-                  "id": "eArrivalCity",
-                  "value": "Atlanta"
+                value: {
+                  id: 'eArrivalCity',
+                  value: 'Atlanta'
                 },
-                "description": "",
-                "display_text": "Atlanta",
-                "display_image_uri": ""
+                description: '',
+                display_text: 'Atlanta',
+                display_image_uri: ''
               },
               {
-                "value": {
-                  "id": "eArrivalCity",
-                  "value": "Cleveland"
+                value: {
+                  id: 'eArrivalCity',
+                  value: 'Cleveland'
                 },
-                "description": "",
-                "display_text": "Cleveland",
-                "display_image_uri": ""
+                description: '',
+                display_text: 'Cleveland',
+                display_image_uri: ''
               }
             ]
           }
@@ -86,55 +91,55 @@ const REQUEST_TO_RESPONSE = {
     nlpResponse: NUANCE_NLP_RESPONSE_BUTTONS,
     expectedBotiumMessages: [
       {
-        "buttons": [
+        buttons: [
           {
-            "payload": "Atlanta",
-            "text": "Atlanta"
+            payload: 'Atlanta',
+            text: 'Atlanta'
           },
           {
-            "payload": "Cleveland",
-            "text": "Cleveland"
+            payload: 'Cleveland',
+            text: 'Cleveland'
           }
         ],
-        "messageText": "Where do you want to go?",
-        "nlp": {
-          "entities": [
+        messageText: 'Where do you want to go?',
+        nlp: {
+          entities: [
             {
-              "confidence": 0.9597064256668091,
-              "name": "eDepartureDate",
-              "value": "tomorrow"
+              confidence: 0.9597064256668091,
+              name: 'eDepartureDate',
+              value: 'tomorrow'
             }
           ],
-          "intent": {
-            "confidence": 0.9976494908332825,
-            "incomprehension": false,
-            "intents": [
+          intent: {
+            confidence: 0.9976494908332825,
+            incomprehension: false,
+            intents: [
               {
-                "confidence": 0.000567290117032826,
-                "name": "iFlightStatus"
+                confidence: 0.000567290117032826,
+                name: 'iFlightStatus'
               },
               {
-                "confidence": 0.00019170483574271202,
-                "name": "iEntities"
+                confidence: 0.00019170483574271202,
+                name: 'iEntities'
               }
             ],
-            "name": "iBookFlight"
+            name: 'iBookFlight'
           }
         }
       }
     ]
   },
-  "Show me deep entity": {
-    request: "Show me deep entity",
+  'Show me deep entity': {
+    request: 'Show me deep entity',
     response: {
       payload: {
         messages: [
           {
-            "visual": [
+            visual: [
               {
-                "text": "mockedMessage"
+                text: 'mockedMessage'
               }
-            ],
+            ]
           }
         ]
       }
@@ -142,29 +147,29 @@ const REQUEST_TO_RESPONSE = {
     nlpResponse: NUANCE_NLP_RESPONSE_WITH_DEEP_ENTITY,
     expectedBotiumMessages: [
       {
-        "messageText": "mockedMessage",
-        "nlp": {
-          "entities": [
+        messageText: 'mockedMessage',
+        nlp: {
+          entities: [
             {
-              "confidence": 0.9597064256668091,
-              "name": "eDepartureDate",
-              "value": "tomorrow"
+              confidence: 0.9597064256668091,
+              name: 'eDepartureDate',
+              value: 'tomorrow'
             }
           ],
-          "intent": {
-            "confidence": 0.9976494908332825,
-            "incomprehension": false,
-            "intents": [
+          intent: {
+            confidence: 0.9976494908332825,
+            incomprehension: false,
+            intents: [
               {
-                "confidence": 0.000567290117032826,
-                "name": "iFlightStatus"
+                confidence: 0.000567290117032826,
+                name: 'iFlightStatus'
               },
               {
-                "confidence": 0.00019170483574271202,
-                "name": "iEntities"
+                confidence: 0.00019170483574271202,
+                name: 'iEntities'
               }
             ],
-            "name": "iBookFlight"
+            name: 'iBookFlight'
           }
         }
       }]
@@ -175,7 +180,6 @@ const REQUEST_TO_RESPONSE = {
 describe('connector', function () {
   describe('rich elements', function () {
     beforeEach(async function () {
-
       this.botMsgs = []
       const queueBotSays = (botMsg) => {
         delete botMsg.sourceData
@@ -246,7 +250,7 @@ describe('connector', function () {
           debug(`bot message received ${JSON.stringify(res2)}`)
           assert.deepEqual(res2, REQUEST_TO_RESPONSE[USER_MESSAGE_WELCOME].expectedBotiumMessages[1])
 
-          await this.connector.UserSays({messageText: entry.request})
+          await this.connector.UserSays({ messageText: entry.request })
 
           for (const expectedBotiumMessage of entry.expectedBotiumMessages) {
             const res3 = await this._nextBotMsg()

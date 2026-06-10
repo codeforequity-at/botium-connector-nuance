@@ -1,9 +1,11 @@
-const debug = require('debug')('botium-connector-nuance-intents')
-const axios = require('axios')
-const xml = require('xml-js')
-const { authenticate, zipToJson } = require('./helper')
-const BotiumConnectorNuance = require('./connector')
-const Capabilities = require('./Capabilities')
+import createDebug from 'debug'
+import axios from 'axios'
+import xml from 'xml-js'
+import { authenticate, zipToJson } from './helper.js'
+import BotiumConnectorNuance from './connector.js'
+import Capabilities from './Capabilities.js'
+
+const debug = createDebug('botium-connector-nuance-intents')
 
 const axiosCustomError = async (options, msg) => {
   let res
@@ -279,43 +281,51 @@ const exportNuanceIntents = async ({ caps, uploadmode }, { convos, utterances },
   debug('export finished')
 }
 
-module.exports = {
-  axios,
-  importHandler: ({ caps, buildconvos, ...rest } = {}) => importNuanceIntents({
-    caps,
-    buildconvos,
-    ...rest
-  }),
-  importArgs: {
-    caps: {
-      describe: 'Capabilities',
-      type: 'json',
-      skipCli: true
-    },
-    buildconvos: {
-      describe: 'Build convo files for intent assertions (otherwise, just write utterances files)',
-      type: 'boolean',
-      default: false
-    }
+const importHandler = ({ caps, buildconvos, ...rest } = {}) => importNuanceIntents({
+  caps,
+  buildconvos,
+  ...rest
+})
+
+const importArgs = {
+  caps: {
+    describe: 'Capabilities',
+    type: 'json',
+    skipCli: true
   },
-  exportHandler: ({ caps, uploadmode, ...rest } = {}, { convos, utterances } = {}, { statusCallback } = {}) => exportNuanceIntents({
-    caps,
-    uploadmode,
-    ...rest
-  }, {
-    convos,
-    utterances
-  }, { statusCallback }),
-  exportArgs: {
-    caps: {
-      describe: 'Capabilities',
-      type: 'json',
-      skipCli: true
-    },
-    uploadmode: {
-      describe: 'Appending Nuance intents and user examples or replace them',
-      choices: ['append', 'replace'],
-      default: 'append'
-    }
+  buildconvos: {
+    describe: 'Build convo files for intent assertions (otherwise, just write utterances files)',
+    type: 'boolean',
+    default: false
   }
+}
+
+const exportHandler = ({ caps, uploadmode, ...rest } = {}, { convos, utterances } = {}, { statusCallback } = {}) => exportNuanceIntents({
+  caps,
+  uploadmode,
+  ...rest
+}, {
+  convos,
+  utterances
+}, { statusCallback })
+
+const exportArgs = {
+  caps: {
+    describe: 'Capabilities',
+    type: 'json',
+    skipCli: true
+  },
+  uploadmode: {
+    describe: 'Appending Nuance intents and user examples or replace them',
+    choices: ['append', 'replace'],
+    default: 'append'
+  }
+}
+
+export {
+  axios,
+  importHandler,
+  importArgs,
+  exportHandler,
+  exportArgs
 }

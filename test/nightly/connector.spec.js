@@ -1,7 +1,7 @@
-require('dotenv').config()
-const assert = require('chai').assert
-const BotiumConnectorNuance = require('../../src/connector')
-const { readCaps } = require('./helper')
+import 'dotenv/config'
+import { assert } from 'chai'
+import BotiumConnectorNuance from '../../src/connector.js'
+import { readCaps } from './helper.js'
 
 describe('connector', function () {
   beforeEach(async function () {
@@ -29,7 +29,6 @@ describe('connector', function () {
       })
     }
   })
-
 
   it('should successfully execute a simple convo with buttons', async function () {
     const res1 = await this._nextBotMsg()

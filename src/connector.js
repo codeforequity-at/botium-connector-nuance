@@ -1,17 +1,22 @@
-const path = require('path')
-const fs = require('fs')
-const util = require('util')
+import path from 'path'
+import fs from 'fs'
+import util from 'util'
+import { fileURLToPath } from 'url'
 
-const grpc = require('@grpc/grpc-js')
-const axios = require('axios')
-const protoLoader = require('@grpc/proto-loader')
-const googleProtoFiles = require('google-proto-files')
-const debug = require('debug')('botium-connector-nuance')
-const _ = require('lodash')
+import grpc from '@grpc/grpc-js'
+import axios from 'axios'
+import protoLoader from '@grpc/proto-loader'
+import googleProtoFiles from 'google-proto-files'
+import createDebug from 'debug'
+import _ from 'lodash'
 
-const Capabilities = require('./Capabilities')
-const { authenticate } = require('./helper')
-const { struct } = require('./structJson')
+import Capabilities from './Capabilities.js'
+import { authenticate } from './helper.js'
+import { struct } from './structJson.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const debug = createDebug('botium-connector-nuance')
 
 const DEFAULTS = {
   [Capabilities.NUANCE_OAUTH_URL]: 'https://auth.crt.nuance.com/oauth2/token',
@@ -472,4 +477,4 @@ class BotiumConnectorNuance {
 BotiumConnectorNuance.axios = axios
 BotiumConnectorNuance.PROTOFILES = PROTOFILES
 
-module.exports = BotiumConnectorNuance
+export default BotiumConnectorNuance
