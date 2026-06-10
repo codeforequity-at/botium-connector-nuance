@@ -1,6 +1,6 @@
-require('dotenv').config()
-const { exportHandler } = require('../../src/intents')
-const { readCaps } = require('./helper')
+import 'dotenv/config'
+import { exportHandler } from '../../src/intents.js'
+import { readCaps } from './helper.js'
 
 describe('exporthandler', function () {
   beforeEach(async function () {

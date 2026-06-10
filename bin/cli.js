@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-const yargsCmd = require('yargs')
-const slug = require('slug')
-const fs = require('fs')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const { BotDriver } = require('botium-core')
+import yargsCmd from 'yargs'
+import slug from 'slug'
+import fs from 'fs'
+import path from 'path'
+import mkdirp from 'mkdirp'
+import { BotDriver } from 'botium-core'
+import { createRequire } from 'module'
+import { importHandler, importArgs, exportHandler, exportArgs } from '../src/intents.js'
 
-const { importHandler, importArgs } = require('../src/intents')
-const { exportHandler, exportArgs } = require('../src/intents')
+const require = createRequire(import.meta.url)
 
 const writeConvo = (compiler, convo, outputDir) => {
   const filename = path.resolve(outputDir, slug(convo.header.name) + '.convo.txt')

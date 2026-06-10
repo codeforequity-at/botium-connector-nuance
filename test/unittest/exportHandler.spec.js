@@ -1,17 +1,20 @@
-const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
+import { createRequire } from 'module'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+import MockAdapter from 'axios-mock-adapter'
+import * as intents from '../../src/intents.js'
+import Capabilities from '../../src/Capabilities.js'
+import { zipToJson } from '../../src/helper.js'
+import BotiumConnectorNuance from '../../src/connector.js'
+import { addDownloaderMocks } from './helper.js'
+
+const require = createRequire(import.meta.url)
+
 chai.use(chaiAsPromised)
 const assert = chai.assert
-const MockAdapter = require('axios-mock-adapter')
 
-const intents = require('../../src/intents')
-const Capabilities = require("../../src/Capabilities")
-const { zipToJson } = require("../../src/helper")
-
-const { addDownloaderMocks } = require('./helper')
 const toUpload = require('./data/utterances_to_export.json')
 const expectedExport = require('./data/expected_export_api.json')
-const BotiumConnectorNuance = require("../../src/connector");
 const MOCKED_JOB_ID = 'mockedJobId'
 
 describe('exporter', function () {
@@ -46,7 +49,6 @@ describe('exporter', function () {
         }
         return res
       })
-
   })
 
   it('should export the chatbot data', async function () {

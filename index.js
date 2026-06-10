@@ -1,8 +1,7 @@
-const BotiumConnectorNuance = require('./src/connector')
-const { importHandler, importArgs } = require('./src/intents')
-const { exportHandler, exportArgs } = require('./src/intents')
+import BotiumConnectorNuance from './src/connector.js'
+import { importHandler, importArgs, exportHandler, exportArgs } from './src/intents.js'
 
-module.exports = {
+export default {
   PluginVersion: 1,
   PluginClass: BotiumConnectorNuance,
   Import: {

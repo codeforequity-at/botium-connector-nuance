@@ -1,8 +1,10 @@
-const Capabilities = require('./Capabilities')
-const qs = require('qs')
-const AdmZip = require('adm-zip')
-const xml = require('xml-js')
-const debug = require('debug')('botium-connector-nuance-helper')
+import Capabilities from './Capabilities.js'
+import qs from 'qs'
+import AdmZip from 'adm-zip'
+import xml from 'xml-js'
+import createDebug from 'debug'
+
+const debug = createDebug('botium-connector-nuance-helper')
 
 const authenticate = async (axios, caps, mixApi, retries = 0) => {
   try {
@@ -46,7 +48,7 @@ const zipToJson = (zipFile, caps) => {
   return { nluJSON, zip, nluXML, xmlFileName }
 }
 
-module.exports = {
+export {
   authenticate,
   zipToJson
 }
