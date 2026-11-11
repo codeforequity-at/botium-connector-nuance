@@ -1,6 +1,6 @@
 {
   "name": "botium-connector-nuance",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Botium Connector for Nuance",
   "type": "module",
   "main": "dist/botium-connector-nuance-cjs.cjs",
